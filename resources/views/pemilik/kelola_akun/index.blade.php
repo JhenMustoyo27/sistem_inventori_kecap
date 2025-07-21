@@ -24,10 +24,15 @@
                     Tambah Akun Baru
                 </a>
                 <form action="{{ route('pemilik.kelola-akun.index') }}" method="GET" class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
-                    <input type="text" name="search" placeholder="Cari username, email, atau role..." class="shadow-sm appearance-none border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:w-auto">
+                    <input type="text" name="search" placeholder="Cari username, email, atau role..." class="shadow-sm appearance-none border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:w-auto" value="{{ request('search') }}">
                     <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out w-full sm:w-auto">
                         Cari
                     </button>
+                     @if(request('search'))
+                        <a href="{{ route('pemilik.kelola-akun.index') }}" class="bg-gray-400 text-center hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-300 ease-in-out w-full sm:w-auto">
+                            Reset
+                        </a>
+                    @endif
                 </form>
             </div>
 

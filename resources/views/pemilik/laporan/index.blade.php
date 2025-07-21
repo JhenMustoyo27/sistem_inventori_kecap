@@ -28,7 +28,7 @@
                         Cari
                     </button>
                      @if(request('search'))
-                        <a href="{{ route('pemilik.laporan.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-300 ease-in-out w-full sm:w-auto">
+                        <a href="{{ route('pemilik.laporan.index') }}" class="bg-gray-400 text-center hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-300 ease-in-out w-full sm:w-auto">
                             Reset
                         </a>
                     @endif

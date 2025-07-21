@@ -62,17 +62,19 @@
         <section class="bg-white p-6 rounded-xl shadow-md">
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">Data Master Stok</h2>
 
-            <!-- Form Pencarian -->
-            <form action="{{ route('admin.master_stok.index') }}" method="GET" class="mb-4 flex items-center space-x-2">
-                <input type="text" name="search" placeholder="Cari kode kecap atau ukuran..." class="shadow-sm appearance-none border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 flex-grow" value="{{ request('search') }}">
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out">
-                    Cari
-                </button>
-                @if(request('search'))
-                    <a href="{{ route('admin.master_stok.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-300 ease-in-out">
-                        Reset
-                    </a>
-                @endif
+            <!-- Form Pencarian -->         
+            <form action="{{ route('admin.master_stok.index') }}" method="GET" class="mb-4 flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                <input type="text" name="search" placeholder="Cari kode kecap atau ukuran..." class="shadow-sm appearance-none border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:flex-grow" value="{{ request('search') }}">
+                <div class="flex space-x-2 w-full sm:w-auto">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out w-full sm:w-auto">
+                        Cari
+                    </button>
+                    @if(request('search'))
+                        <a href="{{ route('admin.master_stok.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-300 ease-in-out w-full sm:w-auto">
+                            Reset
+                        </a>
+                    @endif
+                </div>
             </form>
 
             <div class="overflow-x-auto">
@@ -157,17 +159,17 @@
 </div>
 
 <!-- Modal Histori Stok -->
-<div id="historyModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
-    <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh]">
-        <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-200">
-            <h3 class="text-lg font-bold text-gray-800">Histori Stok untuk <span id="historyKecapCode"></span> (<span id="historyUkuran"></span>)</h3>
-            <button type="button" onclick="hideHistoryModal()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+<div id="historyModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden p-4 sm:p-6">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
+        <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-200 p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-bold text-gray-800">Histori Stok untuk <span id="historyKecapCode"></span> (<span id="historyUkuran"></span>)</h3>
+            <button type="button" onclick="hideHistoryModal()" class="text-gray-400 hover:text-gray-600 text-2xl sm:text-3xl">&times;</button>
         </div>
-        <div id="historyContent" class="text-gray-700 overflow-y-auto">
+        <div id="historyContent" class="text-gray-700 overflow-y-auto px-4 sm:px-6 flex-grow">
             <!-- Histori akan dimuat di sini -->
             <p>Memuat histori...</p>
         </div>
-        <div class="flex justify-end mt-6">
+        <div class="flex justify-end mt-4 p-4 sm:p-6 border-t border-gray-200">
             <button type="button" onclick="hideHistoryModal()" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 transition duration-200">Tutup</button>
         </div>
     </div>

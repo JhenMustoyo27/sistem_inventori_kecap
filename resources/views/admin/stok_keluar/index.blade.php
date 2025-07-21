@@ -72,16 +72,18 @@
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">Data Stok Keluar</h2>
 
             <!-- Form Pencarian -->
-            <form action="{{ route('admin.stok_keluar.index') }}" method="GET" class="mb-4 flex items-center space-x-2">
-                <input type="text" name="search" placeholder="Cari kode kecap, ukuran, atau tanggal..." class="shadow-sm appearance-none border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 flex-grow" value="{{ request('search') }}">
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out">
-                    Cari
-                </button>
-                @if(request('search'))
-                    <a href="{{ route('admin.stok_keluar.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-300 ease-in-out">
-                        Reset
-                    </a>
-                @endif
+            <form action="{{ route('admin.stok_keluar.index') }}" method="GET" class="mb-4 flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                <input type="text" name="search" placeholder="Cari kode kecap, ukuran, atau tanggal..." class="shadow-sm appearance-none border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full sm:flex-grow" value="{{ request('search') }}">
+                <div class="flex space-x-2 w-full sm:w-auto">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out w-full sm:w-auto">
+                        Cari
+                    </button>
+                    @if(request('search'))
+                        <a href="{{ route('admin.stok_keluar.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-300 ease-in-out w-full sm:w-auto">
+                            Reset
+                        </a>
+                    @endif
+                </div>
             </form>
 
             <div class="overflow-x-auto">

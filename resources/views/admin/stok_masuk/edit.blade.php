@@ -40,6 +40,10 @@
                         <input type="date" id="tanggal_masuk" name="tanggal_masuk" class="shadow-sm appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500" value="{{ old('tanggal_masuk', $kecapMasuk->tanggal_masuk->format('Y-m-d')) }}" required>
                     </div>
                     <div>
+                        <label for="tanggal_expired" class="block text-gray-700 text-sm font-semibold mb-2">Tanggal Expired</label>
+                        <input type="date" id="tanggal_expired" name="tanggal_expired" class="shadow-sm appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500" value="{{ old('tanggal_expired', $kecapMasuk->tanggal_expired->format('Y-m-d')) }}" required>
+                    </div>
+                    <div>
                         <label for="kualitas" class="block text-gray-700 text-sm font-semibold mb-2">Kualitas</label>
                         <input type="text" id="kualitas" name="kualitas" class="shadow-sm appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500" value="{{ old('kualitas', $kecapMasuk->kualitas) }}" required>
                     </div>
