@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="w-full max-w-2xl bg-white p-8 rounded-xl shadow-lg">
+    <div class="w-full bg-white p-8 rounded-xl shadow-lg">
         <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Edit Akun Pengguna</h1>
 
         @if ($errors->any())
