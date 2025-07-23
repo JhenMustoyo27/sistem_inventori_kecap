@@ -18,11 +18,12 @@
                 </svg>
             </button>
         </header>
-
+        
         <!-- Sidebar -->
         <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-gray-800 text-white p-6 flex flex-col rounded-r-xl shadow-lg
-                                   transform -translate-x-full md:translate-x-0 md:relative md:flex md:h-auto md:rounded-r-xl md:shadow-lg
-                                   z-50">
+        transform -translate-x-full md:translate-x-0 md:relative md:flex md:h-auto md:rounded-r-xl md:shadow-lg
+        z-50">
+            <img src="{{ asset('image/logo-ishaku.png') }}" class="w-14 h-14 mx-auto" alt="">
             <div class="text-2xl font-bold mb-8 text-center">Kecap Riboet</div>
             <nav class="flex-grow">
                 <ul>
