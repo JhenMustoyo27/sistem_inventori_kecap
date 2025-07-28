@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Inventori Kecap Riboet</title>
+    <title>Sistem Inventori Kecap Putra Riboet</title>
     @vite('resources/css/app.css')
 </head>
 <body class="bg-gray-100 font-sans antialiased">
@@ -11,7 +11,7 @@
     @if (Auth::check()) 
     <!-- Mobile Header & Hamburger Menu -->
         <header class="bg-gray-800 text-white p-4 flex justify-between items-center md:hidden">
-            <div class="text-xl font-bold">Kecap Riboet</div>
+            <div class="text-xl font-bold">Kecap Putra Riboet</div>
             <button id="sidebarToggle" class="text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -24,7 +24,8 @@
         transform -translate-x-full md:translate-x-0 md:relative md:flex md:h-auto md:rounded-r-xl md:shadow-lg
         z-50">
             <img src="{{ asset('image/logo-ishaku.png') }}" class="w-14 h-14 mx-auto" alt="">
-            <div class="text-2xl font-bold mb-8 text-center">Kecap Riboet</div>
+            <div class="text-2xl font-bold text-center">Kecap</div>
+            <div class="text-2xl font-bold mb-8 text-center">Putra Riboet</div>
             <nav class="flex-grow">
                 <ul>
                     <li class="mb-4">

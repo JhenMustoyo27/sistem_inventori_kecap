@@ -3,7 +3,10 @@
 @section('content')
 <div class="flex items-center justify-center min-h-screen">
     <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <h2 class="text-2xl font-bold text-center text-gray-800">Sistem Inventori Kecap Riboet</h2>
+        <div>
+            <h2 class="text-2xl font-bold text-center text-gray-800">Sistem Inventori Kecap</h2>
+            <h2 class="text-2xl font-bold text-center -pt-8 text-gray-800">Putra Riboet</h2>
+        </div>
         <p class="text-center text-gray-600">Silakan login ke akun Anda</p>
         
         <form method="POST" action="{{ route('login.post') }}" class="space-y-6">

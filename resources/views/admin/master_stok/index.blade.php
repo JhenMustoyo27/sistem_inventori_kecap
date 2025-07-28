@@ -7,7 +7,7 @@
         <section class="bg-white p-6 rounded-xl shadow-md mb-8">
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">Tambah Data Master Stok</h2>
             @if ($errors->any())
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-4" role="alert">
+                <div id="eror-message" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-4" role="alert">
                     <strong class="font-bold">Oops!</strong>
                     <span class="block sm:inline">Ada beberapa masalah dengan input Anda.</span>
                     <ul class="mt-2 list-disc list-inside">
@@ -19,9 +19,15 @@
             @endif
 
             @if (session('success'))
-                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative mb-4" role="alert">
+                <div id="success-message" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative mb-4" role="alert">
                     <strong class="font-bold">Berhasil!</strong>
                     <span class="block sm:inline">{{ session('success') }}</span>
+                </div>
+            
+             @elseif (session('error'))
+                <div id="gagal-message" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-4" role="alert">
+                    <strong class="font-bold">Gagal Hapus!</strong>
+                    <span class="block sm:inline">{{ session('error') }}</span>
                 </div>
             @endif
 
@@ -315,5 +321,23 @@
             historyModal.classList.add('hidden');
         }
     });
+    setTimeout(function() {
+        var message = document.getElementById('success-message');
+        if (message) {
+            message.style.display = 'none';
+        }
+    }, 5000);
+    setTimeout(function() {
+        var message = document.getElementById('gagal-message');
+        if (message) {
+            message.style.display = 'none';
+        }
+    }, 5000);
+    setTimeout(function() {
+        var message = document.getElementById('eror-message');
+        if (message) {
+            message.style.display = 'none';
+        }
+    }, 5000);
 </script>
 @endsection

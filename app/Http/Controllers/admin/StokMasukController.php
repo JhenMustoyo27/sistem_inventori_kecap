@@ -87,6 +87,12 @@ class StokMasukController extends Controller
      */
     public function edit(KecapMasuk $kecapMasuk)
     {
+            // Fetch all available KecapMasuk entries for the dropdown, similar to index
+            // Although for edit, we might just display the current kecapMasuk info
+        $availableKecapMasuk = KecapMasuk::whereHas('masterStok')
+                                        ->select('id', 'kode_kecap', 'ukuran', 'harga_jual')
+                                        ->orderBy('kode_kecap')
+                                        ->get();
         return view('admin.stok_masuk.edit', compact('kecapMasuk'));
     }
 
