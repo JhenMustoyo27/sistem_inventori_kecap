@@ -80,10 +80,6 @@ class KelolaAkunController extends Controller
      */
     public function edit(User $user) // Route Model Binding akan otomatis menemukan user berdasarkan ID
     {
-        // $user = User::findOrFail($user);
-        // Jika Route Model Binding gagal menemukan user (misal: ID tidak ada),
-        // Laravel secara otomatis akan melempar 404.
-        // Jadi, tidak perlu pengecekan if ($user) di sini.
         return view('pemilik.kelola_akun.edit', compact('user'));
     }
 
