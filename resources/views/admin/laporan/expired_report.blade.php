@@ -24,7 +24,7 @@
 
         <!-- Tabel Laporan Expired -->
         <section class="bg-white p-6 rounded-xl shadow-md">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Ringkasan Stok Expired & Akan Expired</h2>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Tabel Laporan Expired & Akan Expired</h2>
             <div class="overflow-x-auto">
                 <table class="min-w-full bg-white rounded-lg shadow-sm">
                     <thead>

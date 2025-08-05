@@ -5,7 +5,7 @@
 @section('content')
 <!-- Filter dan Tombol Download -->
         <section class="bg-white p-6 rounded-xl shadow-md mb-8">
-                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Filter Laporan</h2>
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Filter Laporan Akhir</h2>
                 <form action="{{ route('admin.laporan.index') }}" method="GET" class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
                     <input type="text" name="search" placeholder="Cari kode kecap atau ukuran..." class="shadow-sm appearance-none border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 flex-grow w-full" value="{{ request('search') }}">
                     <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out w-full sm:w-auto">
@@ -24,7 +24,7 @@
 
         <!-- Tabel Laporan -->
         <section class="bg-white p-6 rounded-xl shadow-md">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Ringkasan Stok</h2>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Tabel Laporan Akhir</h2>
             <div class="overflow-x-auto">
                 <table class="min-w-full bg-white rounded-lg shadow-sm">
                     <thead>

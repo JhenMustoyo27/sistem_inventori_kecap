@@ -6,13 +6,18 @@
     <title>Laporan Akhir Stok Kecap Riboet</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            font-size: 10pt;
+            font-family: sans-serif;
+            font-size: 10px;
         }
-        h1 {
-            text-align: center;
-            font-size: 18pt;
+        .header {
+            text-align: start;
             margin-bottom: 20px;
+        }
+        .logo {
+            width: 80px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto;
         }
         table {
             width: 100%;
@@ -20,26 +25,71 @@
             margin-bottom: 20px;
         }
         th, td {
-            border: 1px solid #000;
+            border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
         th {
             background-color: #f2f2f2;
         }
-        .text-right {
-            text-align: right;
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
         }
         .footer {
+            font-size: 8px;
             text-align: center;
-            font-size: 8pt;
             margin-top: 30px;
+        }
+        .signature {
+            margin-top: 5px;
+            text-align: right;
+            font-size: 10px;
+        }
+        .signature p {
+            margin-bottom: 6px; /* space for actual signature */
+        }
+
+        .signature .nama {
+            margin-top: 60px;
+        }
+        .no-border-table,
+        .no-border-table td {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        .no-border-table {
+            margin-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .no-border-table h1 {
+            margin: 0;
+            font-size: 16px;
+            text-align: left;
         }
     </style>
 </head>
 <body>
-    <h1>Laporan Akhir Stok Kecap Riboet</h1>
-    <p>Tanggal Cetak: {{ \Carbon\Carbon::now()->format('d-m-Y H:i:s') }}</p>
+    {{-- Laravel Blade --}}
+    @php
+        $logoPath = public_path('image/logo-ishaku.png');
+        $logoBase64 = 'public:image/logo-ishaku.png;base64,' . base64_encode(file_get_contents($logoPath));
+    @endphp
+
+    <table class="no-border-table">
+    <tr>
+        <td style="padding-left: 80px;">
+            <img src="{{ public_path('image/logo-ishaku.png') }}" alt="Logo" width="70">
+        </td>
+        <td style="padding-left: 0px;">
+            <h1>Laporan Akhir Stok Kecap Riboet</h1>
+        </td>
+    </tr>
+</table>
+<hr>
+<p style="text-align: center;">Tanggal Laporan: {{ date('d-m-Y H:i:s') }}</p>
 
     <table>
         <thead>
@@ -77,8 +127,15 @@
         </tbody>
     </table>
 
+    <!-- Tanda tangan -->
+   <div class="signature">
+        <p>Purwokerto, {{ now()->format('d F Y') }}</p>
+        <p>Pemilik Kecap Riboet</p>
+        <p class="nama"><strong>Indra Kumaladewa</strong></p> <!-- Ganti dengan nama pemilik -->
+    </div>
+
     <div class="footer">
-        Laporan ini dibuat secara otomatis oleh Sistem Inventori Kecap Riboet.
+        Laporan ini dibuat secara otomatis oleh sistem Kecap Riboet.
     </div>
 </body>
 </html>

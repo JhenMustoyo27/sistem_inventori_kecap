@@ -7,6 +7,16 @@
             font-family: sans-serif;
             font-size: 10px;
         }
+        .header {
+            text-align: start;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 80px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -29,11 +39,55 @@
             text-align: center;
             margin-top: 30px;
         }
+        .signature {
+            margin-top: 5px;
+            text-align: right;
+            font-size: 10px;
+        }
+        .signature p {
+            margin-bottom: 6px; /* space for actual signature */
+        }
+
+        .signature .nama {
+            margin-top: 60px;
+        }
+        .no-border-table,
+        .no-border-table td {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        .no-border-table {
+            margin-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .no-border-table h1 {
+            margin: 0;
+            font-size: 16px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
-    <h1>Laporan Akhir Stok Kecap Riboet</h1>
-    <p>Tanggal Laporan: {{ date('d-m-Y H:i:s') }}</p>
+    {{-- Laravel Blade --}}
+    @php
+        $logoPath = public_path('image/logo-ishaku.png');
+        $logoBase64 = 'public:image/logo-ishaku.png;base64,' . base64_encode(file_get_contents($logoPath));
+    @endphp
+
+    <table class="no-border-table">
+    <tr>
+        <td style="padding-left: 80px;">
+            <img src="{{ public_path('image/logo-ishaku.png') }}" alt="Logo" width="70">
+        </td>
+        <td style="padding-left: 0px;">
+            <h1>Laporan Akhir Stok Kecap Riboet</h1>
+        </td>
+    </tr>
+</table>
+<hr>
+<p style="text-align: center;">Tanggal Laporan: {{ date('d-m-Y H:i:s') }}</p>
 
     <table>
         <thead>
@@ -69,6 +123,13 @@
             @endforelse
         </tbody>
     </table>
+
+    <!-- Tanda tangan -->
+<div class="signature">
+        <p>Purwokerto, {{ now()->format('d F Y') }}</p>
+        <p>Pemilik Kecap Riboet</p>
+        <p class="nama"><strong>Indra Kumaladewa</strong></p> <!-- Ganti dengan nama pemilik -->
+    </div>
 
     <div class="footer">
         Laporan ini dibuat secara otomatis oleh sistem Kecap Riboet.

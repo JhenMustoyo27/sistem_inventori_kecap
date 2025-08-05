@@ -4,7 +4,7 @@
 
 @section('content')
 <section class="bg-white p-6 rounded-xl shadow-md mb-8">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Ringkasan Laporan Stok</h2>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Filter Laporan Akhir</h2>
 
             @if (session('success'))
                 <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative mb-4" role="alert">
@@ -37,7 +37,9 @@
                     Unduh PDF
                 </a>
             </div>
-
+        </section>
+        <section class="bg-white p-6 rounded-xl shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Tabel Laporan Akhir</h2>
             <div class="overflow-x-auto">
                 <table class="min-w-full bg-white rounded-lg shadow-sm">
                     <thead>
