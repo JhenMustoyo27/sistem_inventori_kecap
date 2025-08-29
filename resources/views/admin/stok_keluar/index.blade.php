@@ -90,6 +90,7 @@
                 <table class="min-w-full bg-white rounded-lg shadow-sm">
                     <thead>
                         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                            <th class="py-3 px-6 text-left">Id Input</th>
                             <th class="py-3 px-6 text-left">Kode Kecap</th>
                             <th class="py-3 px-6 text-left">Ukuran</th>
                             <th class="py-3 px-6 text-left">Jumlah Keluar</th>
@@ -103,6 +104,7 @@
                     <tbody class="text-gray-700 text-sm font-light">
                         @forelse ($stokKeluar as $stok)
                             <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap">{{ $stok->id ?? 'N/A' }}</td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">{{ $stok->kecapMasuk?->kode_kecap ?? 'N/A' }}</td>
                                 <td class="py-3 px-6 text-left capitalize">{{ $stok->kecapMasuk?->ukuran ?? 'N/A' }}</td>
                                 <td class="py-3 px-6 text-left">{{ $stok->jumlah_keluar }}</td>

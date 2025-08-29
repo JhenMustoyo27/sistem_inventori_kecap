@@ -31,7 +31,7 @@ class MasterStokController extends Controller
             });
         }
 
-        $masterStok = $query->orderBy('created_at', 'desc')->paginate(10);
+        $masterStok = $query->orderBy('id', 'asc')->paginate(10);
 
         $availableKecapMasuk = KecapMasuk::select('id', 'kode_kecap', 'ukuran')
                                         ->orderBy('kode_kecap')

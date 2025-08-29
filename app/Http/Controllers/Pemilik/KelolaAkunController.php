@@ -55,7 +55,7 @@ class KelolaAkunController extends Controller
     {
         $request->validate([
             'username' => 'required|string|max:255|unique:users,username',
-            'email' => 'required|string|email|max:255|unique:users,email',
+            // 'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'role' => 'required|in:admin,pemilik',
             'member_token' => 'nullable|string|max:255',
@@ -63,7 +63,7 @@ class KelolaAkunController extends Controller
 
         User::create([
             'username' => $request->username,
-            'email' => $request->email,
+            // 'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
             'member_token' => $request->member_token,
@@ -99,13 +99,13 @@ class KelolaAkunController extends Controller
                 'max:255',
                 Rule::unique('users')->ignore($user->id), // Abaikan ID user saat ini
             ],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore($user->id), // Abaikan ID user saat ini
-            ],
+            // 'email' => [
+            //     'required',
+            //     'string',
+            //     'email',
+            //     'max:255',
+            //     Rule::unique('users')->ignore($user->id), // Abaikan ID user saat ini
+            // ],
             'role' => 'required|in:admin,pemilik',
             'member_token' => 'nullable|string|max:255',
         ];
@@ -118,7 +118,7 @@ class KelolaAkunController extends Controller
 
         $data = [
             'username' => $request->username,
-            'email' => $request->email,
+            // 'email' => $request->email,
             'role' => $request->role,
             'member_token' => $request->member_token,
         ];

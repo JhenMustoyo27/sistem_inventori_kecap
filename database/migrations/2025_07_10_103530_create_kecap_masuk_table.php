@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('kecap_masuk', function (Blueprint $table) {
             $table->id(); // Kolom ID otomatis (primary key)
             $table->string('kode_kecap')->unique(); // Kode unik untuk setiap jenis kecap
-            $table->enum('ukuran', ['besar', 'sedang', 'kecil']); // Ukuran kecap (enum: besar, sedang, kecil)
+            $table->enum('ukuran', ['besar (600 ml)', 'sedang (300 ml)', 'kecil (130 ml)']); // Ukuran kecap (enum: besar, sedang, kecil)
             $table->date('tanggal_masuk'); // Tanggal kecap masuk
             $table->date('tanggal_expired'); // Tanggal kedaluwarsa (akan dihitung otomatis)
             $table->string('kualitas'); // Kualitas kecap (misal: "Baik", "Sedang")

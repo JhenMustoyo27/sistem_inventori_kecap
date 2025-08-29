@@ -26,11 +26,11 @@
                        class="shadow-sm appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-300 ease-in-out">
             </div>
 
-            <div class="mb-4">
+            {{-- <div class="mb-4">
                 <label for="email" class="block text-gray-700 text-sm font-semibold mb-2">Email:</label>
                 <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}" required
                        class="shadow-sm appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-300 ease-in-out">
-            </div>
+            </div> --}}
 
             <div class="mb-4">
                 <label for="password" class="block text-gray-700 text-sm font-semibold mb-2">Password (kosongkan jika tidak ingin mengubah):</label>

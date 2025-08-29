@@ -29,6 +29,7 @@
                 <table class="min-w-full bg-white rounded-lg shadow-sm">
                     <thead>
                         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                            <th class="py-3 px-6 text-left">Id Input</th>
                             <th class="py-3 px-6 text-left">Kode Kecap</th>
                             <th class="py-3 px-6 text-left">Ukuran</th>
                             <th class="py-3 px-6 text-left">Stok Masuk Awal</th>
@@ -43,6 +44,7 @@
                     <tbody class="text-gray-700 text-sm font-light">
                         @forelse ($laporanPaginated as $item)
                             <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap">{{ $item['kecap_masuk_id'] }}</td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">{{ $item['kode_kecap'] }}</td>
                                 <td class="py-3 px-6 text-left capitalize">{{ $item['ukuran'] }}</td>
                                 <td class="py-3 px-6 text-left">{{ $item['jumlah_stok_masuk_awal'] }}</td>

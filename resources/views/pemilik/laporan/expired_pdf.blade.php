@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Stok Kedaluwarsa Kecap Riboet</title>
+    <title>Laporan Stok Kedaluwarsa Kecap Putra Riboet</title>
     <style>
         body {
             font-family: sans-serif;
@@ -84,7 +84,7 @@
             <img src="{{ public_path('image/logo-ishaku.png') }}" alt="Logo" width="70">
         </td>
         <td style="padding-left: 0px;">
-            <h1>Laporan Expired Stok Kecap Riboet</h1>
+            <h1>Laporan Expired Stok Kecap Putra Riboet</h1>
         </td>
     </tr>
 </table>
@@ -94,6 +94,7 @@
     <table>
         <thead>
             <tr>
+                <th>Id Input</th>
                 <th>Kode Kecap</th>
                 <th>Ukuran</th>
                 <th>Stok Masuk Awal</th>
@@ -109,6 +110,7 @@
             {{-- Mengakses sebagai array --}}
             @forelse ($laporanExpired as $data)
                 <tr>
+                    <td>{{ $data['kecap_masuk_id'] }}</td>
                     <td>{{ $data['kode_kecap'] }}</td>
                     <td>{{ ucfirst($data['ukuran']) }}</td>
                     <td>{{ $data['jumlah_stok_masuk_awal'] }}</td>
@@ -137,7 +139,7 @@
     </div>
 
     <div class="footer">
-        Laporan ini dibuat secara otomatis oleh sistem Kecap Riboet.
+        Laporan ini dibuat secara otomatis oleh sistem Kecap Putra Riboet.
     </div>
 </body>
 </html>

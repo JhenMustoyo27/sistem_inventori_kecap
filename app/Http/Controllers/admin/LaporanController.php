@@ -45,7 +45,7 @@ class LaporanController extends Controller
 
             // Tanggal Keluar (terakhir)
             $latestStokKeluar = StokKeluar::where('kecap_masuk_id', $kecap->id)
-                                          ->orderBy('tanggal_keluar', 'desc')
+                                          ->orderBy('id', 'asc')
                                           ->first();
             $tanggalKeluarTerakhir = $latestStokKeluar ? $latestStokKeluar->tanggal_keluar : null;
 
@@ -56,6 +56,7 @@ class LaporanController extends Controller
                                         ->total_penjualan ?? 0;
 
             $laporan[] = [
+                'kecap_masuk_id' => $kecap->id,
                 'kode_kecap' => $kecap->kode_kecap,
                 'ukuran' => $kecap->ukuran,
                 'jumlah_stok_masuk_awal' => $jumlahStokMasukAwal,
@@ -105,7 +106,7 @@ class LaporanController extends Controller
             $jumlahStokKeluar = StokKeluar::where('kecap_masuk_id', $kecap->id)->sum('jumlah_keluar');
 
             $latestStokKeluar = StokKeluar::where('kecap_masuk_id', $kecap->id)
-                                          ->orderBy('tanggal_keluar', 'desc')
+                                          ->orderBy('id', 'asc')
                                           ->first();
             $tanggalKeluarTerakhir = $latestStokKeluar ? $latestStokKeluar->tanggal_keluar : null;
 
@@ -115,6 +116,7 @@ class LaporanController extends Controller
                                         ->total_penjualan ?? 0;
 
             $laporan[] = [
+                'kecap_masuk_id' => $kecap->id,
                 'kode_kecap' => $kecap->kode_kecap,
                 'ukuran' => $kecap->ukuran,
                 'jumlah_stok_masuk_awal' => $jumlahStokMasukAwal,
@@ -159,7 +161,7 @@ class LaporanController extends Controller
             });
         }
 
-        $kecapExpiredData = $query->orderBy('tanggal_expired', 'asc')->get();
+        $kecapExpiredData = $query->orderBy('id', 'asc')->get();
 
         $laporanExpired = [];
 
@@ -180,6 +182,7 @@ class LaporanController extends Controller
             }
 
             $laporanExpired[] = [
+                'kecap_masuk_id' => $kecap->id,
                 'kode_kecap' => $kecap->kode_kecap,
                 'ukuran' => $kecap->ukuran,
                 'jumlah_stok_masuk_awal' => $jumlahStokMasukAwal,
@@ -227,7 +230,7 @@ class LaporanController extends Controller
             });
         }
 
-        $kecapExpiredData = $query->orderBy('tanggal_expired', 'asc')->get();
+        $kecapExpiredData = $query->orderBy('id', 'asc')->get();
 
         $laporanExpired = [];
 
@@ -248,6 +251,7 @@ class LaporanController extends Controller
             }
 
             $laporanExpired[] = [
+                'kecap_masuk_id' => $kecap->id,
                 'kode_kecap' => $kecap->kode_kecap,
                 'ukuran' => $kecap->ukuran,
                 'jumlah_stok_masuk_awal' => $jumlahStokMasukAwal,

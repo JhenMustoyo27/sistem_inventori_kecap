@@ -30,9 +30,9 @@
                         <label for="ukuran" class="block text-gray-700 text-sm font-semibold mb-2">Ukuran</label>
                         <select id="ukuran" name="ukuran" class="shadow-sm appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
                             <option value="">Pilih Ukuran</option>
-                            <option value="besar" {{ old('ukuran', $kecapMasuk->ukuran) == 'besar' ? 'selected' : '' }}>Besar</option>
-                            <option value="sedang" {{ old('ukuran', $kecapMasuk->ukuran) == 'sedang' ? 'selected' : '' }}>Sedang</option>
-                            <option value="kecil" {{ old('ukuran', $kecapMasuk->ukuran) == 'kecil' ? 'selected' : '' }}>Kecil</option>
+                            <option value="besar (600 ml)" {{ old('ukuran', $kecapMasuk->ukuran) == 'besar' ? 'selected' : '' }}>Besar (600 ml)</option>
+                            <option value="sedang (300 ml)" {{ old('ukuran', $kecapMasuk->ukuran) == 'sedang' ? 'selected' : '' }}>Sedang (300 ml)</option>
+                            <option value="kecil (130 ml)" {{ old('ukuran', $kecapMasuk->ukuran) == 'kecil' ? 'selected' : '' }}>Kecil (130 ml)</option>
                         </select>
                     </div>
                     <div>

@@ -44,6 +44,7 @@
                 <table class="min-w-full bg-white rounded-lg shadow-sm">
                     <thead>
                         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                            <th class="py-3 px-6 text-left">Id Input</th>
                             <th class="py-3 px-6 text-left">Kode Kecap</th>
                             <th class="py-3 px-6 text-left">Ukuran</th>
                             <th class="py-3 px-6 text-left">Stok Masuk</th>
@@ -59,6 +60,7 @@
                         {{-- Mengubah $laporan menjadi $laporanPaginated --}}
                         @forelse ($laporanPaginated as $data)
                             <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left whitespace-nowrap">{{ $data['kecap_masuk_id'] }}</td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap">{{ $data['kode_kecap'] }}</td>
                                 <td class="py-3 px-6 text-left capitalize">{{ $data['ukuran'] }}</td>
                                 <td class="py-3 px-6 text-left">{{ $data['jumlah_stok_masuk'] }}</td>

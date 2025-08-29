@@ -94,6 +94,9 @@
                     </li>
                 </ul>
             </nav>
+            <p>&copy;Created by</p>
+            <p>Vinsensius Mustoyo-{{ date('Y') }}</p>
+            <p>STIKOM Yos Sudarso Purwokerto.</p>
         </aside>
 
     <div id="sidebarBackdrop" class="fixed inset-0 bg-black opacity-50 z-40 hidden md:hidden"></div>
@@ -116,18 +119,27 @@
                     <!-- Tombol Logout di pojok kanan atas -->
                     <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="flex items-center p-2 rounded-lg bg-red-600 text-white transition duration-200 hover:bg-red-700">
-                        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    <form method="POST" action="/logout">
+                    <button 
+                        type="submit" 
+                        class="flex items-center p-2 rounded-lg bg-red-600 text-white transition duration-200 hover:bg-red-700"
+                        onclick="return confirm('Apakah Anda yakin ingin keluar?');">
+                        
+                        <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                        </svg>
                         Logout
                     </button>
+                </form>
                 </form>
                 </div>
             </header>
         @endif
         
             @yield('content')
-        
+
     </main>
+
 </div>
 
 <script>

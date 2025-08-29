@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/stok-masuk/{kecapMasuk}/edit', [StokMasukController::class, 'edit'])->name('stok_masuk.edit');
         Route::put('/stok-masuk/{kecapMasuk}', [StokMasukController::class, 'update'])->name('stok_masuk.update');
         Route::delete('/stok-masuk/{kecapMasuk}', [StokMasukController::class, 'destroy'])->name('stok_masuk.destroy');
+        Route::get('/stok-masuk/get-next-code', [StokMasukController::class, 'getNextCode'])->name('admin.stok_masuk.getNextCode');
 
         // Rute untuk Master Stok (Kelola Stok)
         Route::get('/master-stok', [MasterStokController::class, 'index'])->name('master_stok.index');

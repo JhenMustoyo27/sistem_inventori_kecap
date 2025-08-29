@@ -25,10 +25,10 @@
                         <label for="username" class="block text-gray-700 text-sm font-semibold mb-2">Username</label>
                         <input type="text" id="username" name="username" class="shadow-sm appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500" value="{{ old('username') }}" required>
                     </div>
-                    <div>
+                    {{-- <div>
                         <label for="email" class="block text-gray-700 text-sm font-semibold mb-2">Email</label>
                         <input type="email" id="email" name="email" class="shadow-sm appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500" value="{{ old('email') }}" required>
-                    </div>
+                    </div> --}}
                     <div>
                         <label for="password" class="block text-gray-700 text-sm font-semibold mb-2">Password</label>
                         <input type="password" id="password" name="password" class="shadow-sm appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500" required>

@@ -29,9 +29,18 @@ class StokMasukController extends Controller
         }
 
         // Mengambil data kecap masuk dengan paginasi
-        $kecapMasuk = $query->orderBy('tanggal_masuk', 'desc')->paginate(10);
+        $kecapMasuk = $query->orderBy('id', 'asc')->paginate(10);
 
         return view('admin.stok_masuk.index', compact('kecapMasuk'));
+    }
+
+    public function getNextCode(Request $request)
+    {
+        $request->validate(['ukuran' => 'required|string']);
+        
+        $nextCode = $this->generateNextCode($request->ukuran);
+
+        return response()->json(['next_code' => $nextCode]);
     }
 
     /**
@@ -42,41 +51,65 @@ class StokMasukController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi input dari form
-        $request->validate([
-            'kode_kecap' => 'required|string|max:255|unique:kecap_masuk,kode_kecap',
-            'ukuran' => 'required|string|in:besar,sedang,kecil',
+        // ## PERUBAHAN UTAMA DI SINI ##
+        // Validasi untuk 'tanggal_expired' dihapus.
+        $validatedData = $request->validate([
+            'ukuran' => 'required|string',
             'tanggal_masuk' => 'required|date',
-            'tanggal_expired' => 'required|date|after_or_equal:tanggal_masuk', // Validasi tanggal expired
             'kualitas' => 'required|string|max:255',
             'harga_jual' => 'required|numeric|min:0',
-        ], [
-            'kode_kecap.unique' => 'Kode Kecap ini sudah ada. Harap gunakan kode lain.',
-            'ukuran.in' => 'Ukuran harus besar, sedang, atau kecil.',
-            'tanggal_expired.after_or_equal' => 'Tanggal Expired tidak boleh sebelum Tanggal Masuk.',
         ]);
 
-        // Buat data kecap masuk baru
-        $kecapMasuk = KecapMasuk::create([
-            'kode_kecap' => $request->kode_kecap,
-            'ukuran' => $request->ukuran,
-            'tanggal_masuk' => $request->tanggal_masuk,
-            'tanggal_expired' => $request->tanggal_expired, // Menggunakan input manual
-            'kualitas' => $request->kualitas,
-            'harga_jual' => $request->harga_jual,
-        ]);
+        // Generate kode kecap di server
+        $validatedData['kode_kecap'] = $this->generateNextCode($request->ukuran);
+        
+        // ## PERUBAHAN UTAMA DI SINI ##
+        // Hitung tanggal expired secara otomatis, 1 tahun dari tanggal masuk.
+        $validatedData['tanggal_expired'] = Carbon::parse($validatedData['tanggal_masuk'])->addYear();
 
-        // Catat histori stok masuk
-        StokHistory::create([
-            'kecap_masuk_id' => $kecapMasuk->id,
-            'event_type' => 'stok_masuk_created',
-            'kode_kecap' => $kecapMasuk->kode_kecap,
-            'ukuran' => $kecapMasuk->ukuran,
-            'quantity' => 0, // Kuantitas di sini bisa 0 atau disesuaikan jika ada konsep "kuantitas masuk" di KecapMasuk
-            'description' => 'Data kecap masuk baru ditambahkan. Kode: ' . $kecapMasuk->kode_kecap . ', Ukuran: ' . $kecapMasuk->ukuran . '.',
-        ]);
+        // Cek duplikasi kode sebelum menyimpan
+        if (KecapMasuk::where('kode_kecap', $validatedData['kode_kecap'])->exists()) {
+            return redirect()->back()
+                ->with('error', 'Gagal menyimpan. Kode kecap sudah ada. Coba lagi.')
+                ->withInput();
+        }
 
-        return redirect()->route('admin.stok_masuk.index')->with('success', 'Data kecap masuk berhasil ditambahkan!');
+        KecapMasuk::create($validatedData);
+
+        return redirect()->route('admin.stok_masuk.index')->with('success', 'Data kecap masuk berhasil ditambahkan.');
+    }
+
+    private function generateNextCode($ukuran)
+    {
+        $prefix = '';
+        if ($ukuran == 'besar (600 ml)') {
+            $prefix = 'B';
+        } elseif ($ukuran == 'sedang (300 ml)') {
+            $prefix = 'S';
+        } elseif ($ukuran == 'kecil (130 ml)') {
+            $prefix = 'K';
+        }
+
+        if (empty($prefix)) {
+            return 'INVALID';
+        }
+
+        // Cari kode terakhir di database dengan prefix yang sama
+        $lastEntry = KecapMasuk::where('kode_kecap', 'like', $prefix . '%')
+                               ->orderBy('kode_kecap', 'desc')
+                               ->first();
+
+        if ($lastEntry) {
+            // Ambil angka dari kode terakhir, contoh: B0001 -> 1
+            $lastNumber = (int) substr($lastEntry->kode_kecap, 1);
+            $newNumber = $lastNumber + 1;
+        } else {
+            // Jika belum ada data sama sekali, mulai dari 1
+            $newNumber = 1;
+        }
+
+        // Format angka menjadi 4 digit dengan padding nol, contoh: 1 -> 0001
+        return $prefix . str_pad($newNumber, 4, '0', STR_PAD_LEFT);
     }
 
     /**
@@ -108,7 +141,7 @@ class StokMasukController extends Controller
         // Validasi input
         $request->validate([
             'kode_kecap' => 'required|string|max:255|unique:kecap_masuk,kode_kecap,' . $kecapMasuk->id,
-            'ukuran' => 'required|string|in:besar,sedang,kecil',
+            'ukuran' => 'required|string|in:besar (600 ml),sedang (300 ml),kecil (130 ml)',
             'tanggal_masuk' => 'required|date',
             'tanggal_expired' => 'required|date|after_or_equal:tanggal_masuk', // Validasi tanggal expired
             'kualitas' => 'required|string|max:255',
