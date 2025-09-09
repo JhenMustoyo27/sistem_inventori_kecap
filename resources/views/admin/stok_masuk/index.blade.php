@@ -203,17 +203,16 @@
 
         async function fetchNextKodeKecap() {
             const selectedUkuran = ukuranSelect.value;
-
             if (!selectedUkuran) {
                 kodeKecapInput.value = 'Pilih ukuran untuk generate kode';
                 return;
             }
-            
             kodeKecapInput.value = 'Generating...';
 
             try {
-                // Ganti URL ini sesuai dengan struktur route Anda
-                const response = await fetch(`/admin/stok-masuk/get-next-code?ukuran=${selectedUkuran}`);
+                // Gunakan URL yang di-generate oleh Blade
+                const url = `{{ route('admin.stok_masuk.getNextCode') }}?ukuran=${selectedUkuran}`;
+                const response = await fetch(url);
                 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
